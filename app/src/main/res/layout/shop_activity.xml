@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor">
+
+    <!-- Wood Texture Background -->
+    <ImageView
+        android:id="@+id/wood_texture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/wood_texture_overlay"
+        android:alpha="0.3"
+        android:scaleType="fitXY"/>
+
+    <!-- Top Currency Bar -->
+    <LinearLayout
+        android:id="@+id/currency_bar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/currency_bar_bg"
+        android:elevation="8dp"
+        android:padding="10dp"
+        android:gravity="center_vertical">
+
+        <!-- Back Button -->
+        <LinearLayout
+            android:id="@+id/btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/nav_icon_bg"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="←"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        <!-- Currency Display -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginEnd="20dp">
+
+            <!-- Gems -->
+            <LinearLayout
+                android:id="@+id/gem_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gem_currency_bg"
+                android:elevation="4dp"
+                android:padding="8dp"
+                android:layout_marginEnd="15dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:text="💎"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:id="@+id/gems_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1,250"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <!-- Coins -->
+            <LinearLayout
+                android:id="@+id/coin_display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/coin_currency_bg"
+                android:elevation="4dp"
+                android:padding="8dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:text="🪙"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_marginEnd="8dp"/>
+
+                <TextView
+                    android:id="@+id/coins_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5,000"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Shop Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/currency_bar"
+        android:layout_above="@+id/bottom_navigation"
+        android:padding="20dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <!-- Shop Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="♔ CHESS SHOP ♔"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="serif"/>
+
+            <!-- Gems Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💎 GET GEMS 💎"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Gem Packs -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="30dp">
+
+                <!-- Small Gem Pack -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_small_gems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/StartCard"
+                    android:layout_marginBottom="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="60dp"
+                            android:text="💎"
+                            android:textSize="36sp"
+                            android:gravity="center"
+                            android:background="@drawable/gem_currency_bg"
+                            android:elevation="3dp"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="20dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Small Gem Pack"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="18sp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="100 Gems"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="14sp"
+                                android:layout_marginTop="2dp"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btn_watch_ad_small"
+                            android:layout_width="120dp"
+                            android:layout_height="45dp"
+                            style="@style/GlossyButton"
+                            android:background="@drawable/watch_ad_button_bg"
+                            android:text="Watch Ad"
+                            android:textSize="16sp"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Medium Gem Pack -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_medium_gems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/StartCard"
+                    android:layout_marginBottom="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="60dp"
+                            android:text="💎"
+                            android:textSize="36sp"
+                            android:gravity="center"
+                            android:background="@drawable/gem_currency_bg"
+                            android:elevation="3dp"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="20dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Medium Gem Pack"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="18sp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="300 Gems"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="14sp"
+                                android:layout_marginTop="2dp"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btn_watch_ad_medium"
+                            android:layout_width="120dp"
+                            android:layout_height="45dp"
+                            style="@style/GlossyButton"
+                            android:background="@drawable/watch_ad_button_bg"
+                            android:text="Watch 3 Ads"
+                            android:textSize="14sp"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Large Gem Pack -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_large_gems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/StartCard"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="60dp"
+                            android:text="💎"
+                            android:textSize="36sp"
+                            android:gravity="center"
+                            android:background="@drawable/gem_currency_bg"
+                            android:elevation="3dp"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="20dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Large Gem Pack"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="18sp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="750 Gems"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="14sp"
+                                android:layout_marginTop="2dp"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btn_watch_ad_large"
+                            android:layout_width="120dp"
+                            android:layout_height="45dp"
+                            style="@style/GlossyButton"
+                            android:background="@drawable/watch_ad_button_bg"
+                            android:text="Watch 7 Ads"
+                            android:textSize="14sp"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <!-- UI Themes Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🎨 UI THEMES 🎨"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Theme Cards -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="30dp">
+
+                <!-- Classic Theme -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_classic_theme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/StartCard"
+                    android:layout_marginBottom="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="80dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/theme_classic_preview"
+                            android:elevation="3dp"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="20dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Classic 8 Ball Pool"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="18sp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Golden Mahogany Wood"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="14sp"
+                                android:layout_marginTop="2dp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginEnd="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="💎"
+                                android:textSize="24sp"
+                                android:gravity="center"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="500"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="14sp"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btn_buy_classic"
+                            android:layout_width="80dp"
+                            android:layout_height="45dp"
+                            style="@style/GlossyButton"
+                            android:background="@drawable/buy_button_bg"
+                            android:text="BUY"
+                            android:textSize="14sp"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Dark Theme -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_dark_theme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/StartCard"
+                    android:layout_marginBottom="15dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="80dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/theme_dark_preview"
+                            android:elevation="3dp"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="20dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Dark Elite"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="18sp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sleek Dark Blue"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="14sp"
+                                android:layout_marginTop="2dp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginEnd="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="💎"
+                                android:textSize="24sp"
+                                android:gravity="center"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="750"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="14sp"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btn_buy_dark"
+                            android:layout_width="80dp"
+                            android:layout_height="45dp"
+                            style="@style/GlossyButton"
+                            android:background="@drawable/buy_button_bg"
+                            android:text="BUY"
+                            android:textSize="14sp"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Neon Theme -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_neon_theme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/StartCard"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="20dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="80dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/theme_neon_preview"
+                            android:elevation="3dp"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="20dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Neon Nights"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="18sp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Vibrant Neon Colors"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="14sp"
+                                android:layout_marginTop="2dp"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginEnd="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="💎"
+                                android:textSize="24sp"
+                                android:gravity="center"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="1000"
+                                android:textColor="@color/primaryTextColor"
+                                android:textSize="14sp"
+                                android:textStyle="bold"/>
+
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btn_buy_neon"
+                            android:layout_width="80dp"
+                            android:layout_height="45dp"
+                            style="@style/GlossyButton"
+                            android:background="@drawable/buy_button_bg"
+                            android:text="BUY"
+                            android:textSize="14sp"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bottom_nav_bg"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="8dp">
+
+        <!-- Home -->
+        <LinearLayout
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <View
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/nav_icon_bg"
+                android:elevation="3dp"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="10sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <!-- Friends -->
+        <LinearLayout
+            android:id="@+id/nav_friends"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <View
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/nav_icon_bg"
+                android:elevation="3dp"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Friends"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="10sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <!-- Equipment/Chess -->
+        <LinearLayout
+            android:id="@+id/nav_equipment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <View
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/nav_icon_bg"
+                android:elevation="3dp"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chess"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="10sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <!-- Events -->
+        <LinearLayout
+            android:id="@+id/nav_events"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <View
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/nav_icon_bg"
+                android:elevation="3dp"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Events"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="10sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <!-- Shop (Active) -->
+        <LinearLayout
+            android:id="@+id/nav_shop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <View
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/nav_icon_active_bg"
+                android:elevation="3dp"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shop"
+                android:textColor="@color/secondaryTextColor"
+                android:textSize="10sp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
