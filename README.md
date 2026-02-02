@@ -3,9 +3,9 @@
 ## 🎯 Objectives
 - 🤝 User friendly
 - 🆓 Free
-- 🚫 No ads
+- 🚫 No ads (optional for rewards)
 - 📦 Small size
-- 🎥 Demo video https://youtu.be/2HwjQDV1P8g
+- 🎨 Premium gaming UI
 
 ## ✨ Features
 - 🔀 Chess 960
@@ -16,6 +16,20 @@
 - 📺 Cast the board via Chromecast
 - 📚 ECO opening explorer
 - ♿ Accessibility support for screen readers like Talkback
+- 🎮 8 Ball Pool inspired premium UI
+- 💎 Gem & Coin currency system
+- 🛍️ Premium Shop with UI themes
+- ⚡ Quick Chess mode
+- 🎨 Multiple UI themes (Classic, Dark Elite, Neon)
+
+## 🛍️ NEW: Premium Shop System
+- 💰 **Earn Gems**: Watch advertisements to get gems
+- 🎨 **UI Themes**: Purchase beautiful themes
+  - **Classic 8 Ball Pool**: Golden mahogany (FREE)
+  - **Dark Elite**: Sleek dark blue (750 gems)
+  - **Neon Nights**: Vibrant neon colors (1000 gems)
+- 💎 **Gem Packs**: 100/300/750 gems with ad rewards
+- 🧭 **Bottom Navigation**: Home, Friends, Chess, Events, Shop
 
 ## 📱 Install
 - 📲 Published on "F-droid" https://f-droid.org/packages/jwtc.android.chess/
