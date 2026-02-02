@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
+import android.widget.LinearLayout;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -202,17 +203,151 @@ public class PlayActivity extends ChessBoardActivity implements EngineListener, 
         textViewWhitePieces = findViewById(R.id.TextViewWhitePieces);
         textViewBlackPieces = findViewById(R.id.TextViewBlackPieces);
 
+// Initialize hidden switches for state management
         switchSound = findViewById(R.id.SwitchSound);
-        switchSound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-           public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-               fVolume = switchSound.isChecked() ? 1.0f : 0.0f;
+        switchBlindfold = findViewById(R.id.SwitchBlindfold);
+        switchFlip = findViewById(R.id.SwitchFlip);
+        switchMoveToSpeech = findViewById(R.id.SwitchSpeech);
+        
+        // Load settings from SharedPreferences (global settings)
+        SharedPreferences prefs = getSharedPreferences("global_preferences", MODE_PRIVATE);
+        fVolume = prefs.getBoolean("sound_enabled", true) ? 1.0f : 0.0f;
+        boolean blindfoldEnabled = prefs.getBoolean("blindfold_enabled", false);
+        boolean flipEnabled = prefs.getBoolean("flip_enabled", false);
+        boolean speechEnabled = prefs.getBoolean("speech_enabled", false);
+        
+        // Set initial states
+        switchSound.setChecked(fVolume > 0.0f);
+        switchBlindfold.setChecked(blindfoldEnabled);
+        switchFlip.setChecked(flipEnabled);
+        switchMoveToSpeech.setChecked(speechEnabled);
+        
+        // Modern UI Button Listeners
+        ImageButton buttonFlip = findViewById(R.id.ButtonFlipBoard);
+        ImageButton buttonBlindfold = findViewById(R.id.ButtonBlindfold);
+        ImageButton buttonSpeech = findViewById(R.id.ButtonSpeech);
+        
+        buttonFlip.setOnClickListener(v -> {
+            flipBoard = !flipBoard;
+            switchFlip.setChecked(flipBoard);
+            prefs.edit().putBoolean("flip_enabled", flipBoard).apply();
+            updateBoardRotation();
+        });
+        
+        buttonBlindfold.setOnClickListener(v -> {
+            boolean newState = !switchBlindfold.isChecked();
+            switchBlindfold.setChecked(newState);
+            prefs.edit().putBoolean("blindfold_enabled", newState).apply();
+            
+            if (newState) {
+                PieceSets.selectedBlindfoldMode = PieceSets.BLINDFOLD_HIDE_PIECES;
+                rebuildBoard();
+                topPieces.setVisibility(View.INVISIBLE);
+                bottomPieces.setVisibility(View.INVISIBLE);
+            } else {
+                PieceSets.selectedBlindfoldMode = PieceSets.BLINDFOLD_SHOW_PIECES;
+                rebuildBoard();
+                topPieces.setVisibility(View.VISIBLE);
+                bottomPieces.setVisibility(View.VISIBLE);
+                topPieces.invalidatePieces();
+                bottomPieces.invalidatePieces();
             }
         });
-
-        switchBlindfold = findViewById(R.id.SwitchBlindfold);
-        switchBlindfold.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-           public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (switchBlindfold.isChecked()) {
+        
+        buttonSpeech.setOnClickListener(v -> {
+            moveToSpeech = !switchMoveToSpeech.isChecked();
+            switchMoveToSpeech.setChecked(moveToSpeech);
+            prefs.edit().putBoolean("speech_enabled", moveToSpeech).apply();
+        });
+        
+        // Global Settings Button
+        ImageButton buttonSettings = findViewById(R.id.ButtonGlobalSettings);
+        buttonSettings.setOnClickListener(v -> {
+            showGlobalSettingsDialog();
+        });
+        
+        // Hidden switch listeners for internal state management
+        switchSound.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            fVolume = isChecked ? 1.0f : 0.0f;
+            prefs.edit().putBoolean("sound_enabled", isChecked).apply();
+        });
+        
+        switchFlip.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            flipBoard = isChecked;
+            updateBoardRotation();
+        });
+        
+        switchBlindfold.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                PieceSets.selectedBlindfoldMode = PieceSets.BLINDFOLD_HIDE_PIECES;
+                rebuildBoard();
+                topPieces.setVisibility(View.INVISIBLE);
+                bottomPieces.setVisibility(View.INVISIBLE);
+            } else {
+                PieceSets.selectedBlindfoldMode = PieceSets.BLINDFOLD_SHOW_PIECES;
+                rebuildBoard();
+                topPieces.setVisibility(View.VISIBLE);
+                bottomPieces.setVisibility(View.VISIBLE);
+                topPieces.invalidatePieces();
+                bottomPieces.invalidatePieces();
+            }
+        });
+        
+        switchMoveToSpeech.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            moveToSpeech = isChecked;
+        });
+        
+        // Also add method at end of class
+    }
+    
+    private void showGlobalSettingsDialog() {
+        SharedPreferences prefs = getSharedPreferences("global_preferences", MODE_PRIVATE);
+        
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
+        builder.setTitle("Global Settings");
+        
+        // Create layout for settings
+        android.widget.LinearLayout layout = new android.widget.LinearLayout(this);
+        layout.setOrientation(android.widget.LinearLayout.VERTICAL);
+        layout.setPadding(50, 40, 50, 10);
+        
+        // Sound toggle
+        com.google.android.material.switchmaterial.SwitchMaterial soundSwitch = new com.google.android.material.switchmaterial.SwitchMaterial(this);
+        soundSwitch.setText("Sound Effects");
+        soundSwitch.setChecked(prefs.getBoolean("sound_enabled", true));
+        
+        // Blindfold toggle
+        com.google.android.material.switchmaterial.SwitchMaterial blindfoldSwitch = new com.google.android.material.switchmaterial.SwitchMaterial(this);
+        blindfoldSwitch.setText("Blindfold Mode");
+        blindfoldSwitch.setChecked(prefs.getBoolean("blindfold_enabled", false));
+        
+        // Speech toggle
+        com.google.android.material.switchmaterial.SwitchMaterial speechSwitch = new com.google.android.material.switchmaterial.SwitchMaterial(this);
+        speechSwitch.setText("Move to Speech");
+        speechSwitch.setChecked(prefs.getBoolean("speech_enabled", false));
+        
+        layout.addView(soundSwitch);
+        layout.addView(blindfoldSwitch);
+        layout.addView(speechSwitch);
+        
+        builder.setView(layout);
+        
+        // Add buttons
+        builder.setPositiveButton("Save", (dialog, which) -> {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("sound_enabled", soundSwitch.isChecked());
+            editor.putBoolean("blindfold_enabled", blindfoldSwitch.isChecked());
+            editor.putBoolean("speech_enabled", speechSwitch.isChecked());
+            editor.apply();
+            
+            // Apply sound setting immediately
+            fVolume = soundSwitch.isChecked() ? 1.0f : 0.0f;
+            switchSound.setChecked(soundSwitch.isChecked());
+            
+            // Apply blindfold setting
+            if (blindfoldSwitch.isChecked() != switchBlindfold.isChecked()) {
+                switchBlindfold.setChecked(blindfoldSwitch.isChecked());
+                if (blindfoldSwitch.isChecked()) {
                     PieceSets.selectedBlindfoldMode = PieceSets.BLINDFOLD_HIDE_PIECES;
                     rebuildBoard();
                     topPieces.setVisibility(View.INVISIBLE);
@@ -225,23 +360,15 @@ public class PlayActivity extends ChessBoardActivity implements EngineListener, 
                     topPieces.invalidatePieces();
                     bottomPieces.invalidatePieces();
                 }
-           }
-       });
-
-        switchFlip = findViewById(R.id.SwitchFlip);
-        switchFlip.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                flipBoard = switchFlip.isChecked();
-                updateBoardRotation();
             }
+            
+            // Apply speech setting
+            moveToSpeech = speechSwitch.isChecked();
+            switchMoveToSpeech.setChecked(speechSwitch.isChecked());
         });
-
-        switchMoveToSpeech = findViewById(R.id.SwitchSpeech);
-        switchMoveToSpeech.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                moveToSpeech = switchMoveToSpeech.isChecked();
-            }
-        });
+        
+        builder.setNegativeButton("Cancel", null);
+        builder.show();
 
         historyRecyclerView = findViewById(R.id.HistoryRecyclerView);
 
@@ -536,14 +663,23 @@ public class PlayActivity extends ChessBoardActivity implements EngineListener, 
         if (state != R.string.state_play && state != R.string.state_mate && state != R.string.state_check) {
             sState = ". " + getString(state);
         }
-        textViewEngineValue.setText(getLastMoveAndTurnDescription() + sState);
-        textViewWhitePieces.setText(getPiecesDescription(BoardConstants.WHITE));
-        textViewBlackPieces.setText(getPiecesDescription(BoardConstants.BLACK));
+        if (textViewEngineValue != null) {
+            textViewEngineValue.setText(getLastMoveAndTurnDescription() + sState);
+        }
+        // Only set text for piece displays if they exist (they're hidden in modern UI)
+        if (textViewWhitePieces != null) {
+            textViewWhitePieces.setText(getPiecesDescription(BoardConstants.WHITE));
+        }
+        if (textViewBlackPieces != null) {
+            textViewBlackPieces.setText(getPiecesDescription(BoardConstants.BLACK));
+        }
     }
 
-    protected void updateSeekBar() {
-        moveAdapter.update();
-        historyRecyclerView.scrollToPosition(jni.getNumBoard() - 1);
+protected void updateSeekBar() {
+        if (moveAdapter != null) {
+            moveAdapter.update();
+            historyRecyclerView.scrollToPosition(jni.getNumBoard() - 1);
+        }
     }
 
     protected void updatePlayers() {
