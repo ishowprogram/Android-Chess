@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- Main Controls Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:background="@color/surfaceColor">
+
+        <!-- Engine Play Button -->
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+            <ImageButton
+                android:id="@+id/ButtonPlay"
+                android:src="@drawable/ic_robot"
+                android:contentDescription="@string/button_engine_play_description"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerInside"/>
+            <ProgressBar
+                android:id="@+id/ProgressBarPlay"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <!-- Move History Display -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="12dp"
+            android:gravity="center">
+
+            <!-- Previous Button -->
+            <ImageButton
+                android:id="@+id/ButtonPrevious"
+                android:src="@drawable/ic_chevron_left"
+                android:contentDescription="@string/button_previous_move_description"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerInside"/>
+
+            <!-- Move History RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/HistoryRecyclerView"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="8dp"
+                android:background="@color/paneBackgroundColor"
+                android:scrollbars="horizontal"
+                android:fadeScrollbars="false"/>
+
+            <!-- Next Button -->
+            <ImageButton
+                android:id="@+id/ButtonNext"
+                android:src="@drawable/ic_chevron_right"
+                android:contentDescription="@string/button_next_move_description"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:scaleType="centerInside"/>
+        </LinearLayout>
+
+        <!-- Menu Button -->
+        <ImageButton
+            android:id="@+id/ButtonMenu"
+            android:src="@drawable/ic_three_dots_vertical"
+            android:contentDescription="@string/button_menu_description"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"/>
+
+    </LinearLayout>
+
+    <!-- ECO Display Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:background="@color/surfaceColor">
+
+        <ImageButton
+            android:id="@+id/ButtonEco"
+            android:src="@drawable/ic_signpost_split"
+            android:contentDescription="ECO openings"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="8dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"/>
+
+        <TextView
+            android:id="@+id/TextViewEco"
+            android:text="--"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="14sp"
+            android:fontFamily="monospace"/>
+    </LinearLayout>
+
+    <!-- Quick Settings - Minimal Icons Only -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="4dp"
+        android:background="@color/surfaceColor">
+
+        <ImageButton
+            android:id="@+id/ButtonFlipBoard"
+            android:src="@drawable/ic_flip"
+            android:contentDescription="Flip board"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="2dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"/>
+
+        <ImageButton
+            android:id="@+id/ButtonBlindfold"
+            android:src="@drawable/ic_eye_off"
+            android:contentDescription="Blindfold mode"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="2dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"/>
+
+        <ImageButton
+            android:id="@+id/ButtonSpeech"
+            android:src="@drawable/ic_volume_up"
+            android:contentDescription="Move to speech"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="2dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"/>
+
+    </LinearLayout>
+
+    <!-- Hidden switch controls for state management -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/SwitchSound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pref_sound"
+            android:checked="true"/>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/SwitchBlindfold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pref_show_blindfold"
+            android:checked="false"/>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/SwitchFlip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/menu_flip"
+            android:checked="false"/>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/SwitchSpeech"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pref_speech"
+            android:checked="false"/>
+    </LinearLayout>
+
+    <!-- Settings Button Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="4dp"
+        android:background="@color/surfaceColor">
+
+        <ImageButton
+            android:id="@+id/ButtonGlobalSettings"
+            android:src="@drawable/ic_settings"
+            android:contentDescription="Global Settings"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="2dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"/>
+
+    </LinearLayout>
+
+    <!-- Hidden TextViews for compatibility -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/TextViewWhitePieces"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dip"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:accessibilityLiveRegion="none"/>
+
+        <TextView
+            android:id="@+id/TextViewBlackPieces"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dip"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:accessibilityLiveRegion="none"/>
+    </LinearLayout>
+
+</LinearLayout>

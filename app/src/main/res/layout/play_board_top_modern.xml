@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LayoutBoardTop"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="8dp"
+    android:background="@color/surfaceColor">
+
+    <!-- Turn Indicator -->
+    <ImageView
+        android:id="@+id/ImageTurnOpp"
+        android:src="@drawable/turnempty"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="8dp"/>
+
+    <!-- Opponent Name and Clock -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/TextViewClockTimeOpp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="12sp"
+            android:fontFamily="monospace"/>
+
+        <TextView
+            android:id="@+id/TextViewOpponent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="14sp"
+            android:text="Computer"
+            android:importantForAccessibility="no"/>
+
+    </LinearLayout>
+
+    <!-- Captured Pieces -->
+    <jwtc.android.chess.views.ChessPiecesStackView
+        android:id="@+id/topPieces"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"/>
+
+</LinearLayout>
