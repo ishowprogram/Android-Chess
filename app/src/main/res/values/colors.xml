@@ -1,16 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primaryColor">#5eb8ff</color>
-    <color name="primaryVariantColor">#0288d1</color>
-    <color name="secondaryColor">#49a61e</color>
-    <color name="secondaryVariantColor">#2a8003</color>
-    <color name="primaryTextColor">#000000</color>
-    <color name="secondaryTextColor">#000000</color>
-    <color name="backgroundColor">#fafafa</color>
-    <color name="textOnBackgroundColor">#000000</color>
-    <color name="surfaceColor">#eeeeee</color>
-    <color name="surfaceTextColor">#000000</color>
+    <!-- 8 Ball Pool Theme Colors -->
+    <!-- Wood Theme -->
+    <color name="backgroundColor">#2D1B13</color>
+    <color name="backgroundDark">#1A0F0A</color>
+    <color name="backgroundLight">#3D2B1F</color>
+    
+    <!-- Golden Accents -->
+    <color name="primaryColor">#FFD700</color>
+    <color name="primaryVariantColor">#FFA500</color>
+    <color name="primaryDark">#B8860B</color>
+    <color name="goldGradientStart">#FFD700</color>
+    <color name="goldGradientEnd">#FFA500</color>
+    
+    <!-- Teal/Quick Chess -->
+    <color name="secondaryColor">#008080</color>
+    <color name="secondaryVariantColor">#006666</color>
+    <color name="tealGradientStart">#008080</color>
+    <color name="tealGradientEnd">#006666</color>
+    
+    <!-- Currency Colors -->
+    <color name="gemBlue">#3498DB</color>
+    <color name="gemBlueDark">#2980B9</color>
+    <color name="coinGold">#8B4513</color>
+    <color name="coinGoldDark">#654321</color>
+    <color name="addGreen">#27AE60</color>
+    <color name="addGreenDark">#229954</color>
+    
+    <!-- Text Colors -->
+    <color name="primaryTextColor">#FFFFFF</color>
+    <color name="secondaryTextColor">#FFD700</color>
+    <color name="textOnBackground">#FFFFFF</color>
+    <color name="surfaceTextColor">#FFFFFF</color>
+    <color name="textOutline">#000000</color>
+    
+    <!-- Glassmorphism -->
+    <color name="glassBackground">#15FFFFFF</color>
+    <color name="glassBorder">#30FFFFFF</color>
+    
+    <!-- Navigation Bar -->
+    <color name="navBarBackground">#1A0F0A</color>
+    <color name="navBarRim">#FFD700</color>
+    <color name="navIconBackground">#4A3426</color>
+    <color name="navIconBackgroundHover">#3D2B1F</color>
+    
+    <!-- Status/Error Colors -->
     <color name="primaryColorDisabled">#888888</color>
     <color name="wrongColor">#D96227</color>
     <color name="paneBackgroundColor">#20879FB6</color>
+    
+    <!-- Legacy Colors (kept for compatibility) -->
+    <color name="surfaceColor">#3D2B1F</color>
 </resources>
