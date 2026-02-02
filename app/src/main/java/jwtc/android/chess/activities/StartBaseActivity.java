@@ -2,7 +2,6 @@ package jwtc.android.chess.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -30,7 +29,6 @@ import jwtc.android.chess.practice.PracticeActivity;
 import jwtc.android.chess.puzzle.PuzzleActivity;
 import jwtc.android.chess.tools.AdvancedActivity;
 
-
 public class StartBaseActivity  extends AppCompatActivity {
     public static final String TAG = "StartBaseActivity";
     protected ListView _list;
@@ -39,8 +37,6 @@ public class StartBaseActivity  extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        SharedPreferences prefs = getSharedPreferences("ChessPlayer", Context.MODE_PRIVATE);
 
         Resources resources = getResources();
         Configuration configuration = resources.getConfiguration();
@@ -52,11 +48,7 @@ public class StartBaseActivity  extends AppCompatActivity {
             resources.updateConfiguration(configuration, displayMetrics);
         }
 
-        if (prefs.getBoolean("nightMode", false)) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-        }
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -71,54 +63,56 @@ public class StartBaseActivity  extends AppCompatActivity {
         ActivityHelper.fixPaddings(this, findViewById(R.id.root_layout));
 
         _list = findViewById(R.id.ListStart);
-        _list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String requestedItem = parent.getItemAtPosition(position).toString();
-                try {
-                    Intent i = new Intent();
-                    Log.i(TAG, requestedItem);
-                    if (requestedItem.equals(getString(R.string.start_play))) {
-                        i.setClass(StartBaseActivity.this, PlayActivity.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        startActivity(i);
-                    } else if (requestedItem.equals(getString(R.string.start_practice))) {
-                        i.setClass(StartBaseActivity.this, PracticeActivity.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        startActivity(i);
-                    } else if (requestedItem.equals(getString(R.string.start_puzzles))) {
-                        i.setClass(StartBaseActivity.this, PuzzleActivity.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        startActivity(i);
-                    } else if (requestedItem.equals(getString(R.string.start_hotspotboard))) {
-                        i.setClass(StartBaseActivity.this, HotspotBoardActivity.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        startActivity(i);
-                    } else if (requestedItem.equals(getString(R.string.start_ics))) {
-                        i.setClass(StartBaseActivity.this, ICSClient.class);
-                        startActivity(i);
-                    } else if (requestedItem.equals(getString(R.string.start_pgn))) {
-                        i.setClass(StartBaseActivity.this, AdvancedActivity.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                        startActivity(i);
-                    } else if (requestedItem.equals(getString(R.string.start_boardpreferences))) {
-                        i.setClass(StartBaseActivity.this, BoardPreferencesActivity.class);
-                        startActivity(i);
-                    } else if (requestedItem.equals(getString(R.string.start_lichess))) {
-                        i.setClass(StartBaseActivity.this, LichessActivity.class);
-                        startActivity(i);
-                    } else {
-                        Log.d(TAG, "Nothing to start");
+        if (_list != null) {
+            _list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String requestedItem = parent.getItemAtPosition(position).toString();
+                    try {
+                        Intent i = new Intent();
+                        Log.i(TAG, requestedItem);
+                        if (requestedItem.equals(getString(R.string.start_play))) {
+                            i.setClass(StartBaseActivity.this, PlayActivity.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                            startActivity(i);
+                        } else if (requestedItem.equals(getString(R.string.start_practice))) {
+                            i.setClass(StartBaseActivity.this, PracticeActivity.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                            startActivity(i);
+                        } else if (requestedItem.equals(getString(R.string.start_puzzles))) {
+                            i.setClass(StartBaseActivity.this, PuzzleActivity.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                            startActivity(i);
+                        } else if (requestedItem.equals(getString(R.string.start_hotspotboard))) {
+                            i.setClass(StartBaseActivity.this, HotspotBoardActivity.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                            startActivity(i);
+                        } else if (requestedItem.equals(getString(R.string.start_ics))) {
+                            i.setClass(StartBaseActivity.this, ICSClient.class);
+                            startActivity(i);
+                        } else if (requestedItem.equals(getString(R.string.start_pgn))) {
+                            i.setClass(StartBaseActivity.this, AdvancedActivity.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                            startActivity(i);
+                        } else if (requestedItem.equals(getString(R.string.start_boardpreferences))) {
+                            i.setClass(StartBaseActivity.this, BoardPreferencesActivity.class);
+                            startActivity(i);
+                        } else if (requestedItem.equals(getString(R.string.start_lichess))) {
+                            i.setClass(StartBaseActivity.this, LichessActivity.class);
+                            startActivity(i);
+                        } else {
+                            Log.d(TAG, "Nothing to start");
+                        }
+                    } catch (Exception ex) {
+                        Log.d(TAG, "Exception " + (ex != null ? ex.getMessage() : " no ex"));
+                        Toast t = Toast.makeText(StartBaseActivity.this, R.string.toast_could_not_start_activity, Toast.LENGTH_LONG);
+                        t.setGravity(Gravity.BOTTOM, 0, 0);
+                        t.show();
                     }
-                } catch (Exception ex) {
-                    Log.d(TAG, "Exception " + (ex != null ? ex.getMessage() : " no ex"));
-                    Toast t = Toast.makeText(StartBaseActivity.this, R.string.toast_could_not_start_activity, Toast.LENGTH_LONG);
-                    t.setGravity(Gravity.BOTTOM, 0, 0);
-                    t.show();
                 }
-            }
-        });
+            });
 
-        _list.requestFocus();
+            _list.requestFocus();
+        }
     }
 }

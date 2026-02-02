@@ -17,6 +17,7 @@ import android.view.accessibility.AccessibilityManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -38,6 +39,7 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         super.onCreate(savedInstanceState);
 
         this.am = (AccessibilityManager) getSystemService(Context.ACCESSIBILITY_SERVICE);
