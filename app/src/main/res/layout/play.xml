@@ -7,7 +7,7 @@
     android:padding="4dip"
     android:orientation="vertical">
 
-    <include layout="@layout/play_board_top"/>
+    <include layout="@layout/play_board_top_modern"/>
 
     <include
         android:id="@+id/includeboard"
@@ -17,8 +17,8 @@
         android:layout_marginTop="1dip"
         android:layout_marginBottom="1dip"/>
 
-    <include layout="@layout/play_board_bottom"/>
+    <include layout="@layout/play_board_bottom_modern"/>
 
-    <include layout="@layout/play_controls"/>
+    <include layout="@layout/play_controls_modern"/>
 
 </LinearLayout>
