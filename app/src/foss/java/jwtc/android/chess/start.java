@@ -21,105 +21,17 @@ public class start extends StartBaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        layoutResource = R.layout.start_foss_modern;
+        layoutResource = R.layout.start_foss;
 
         super.onCreate(savedInstanceState);
         
-        setupModernCardClickListeners();
+        setupCardClickListeners();
     }
     
-    private void setupModernCardClickListeners() {
-        try {
-            // Play Card
-            View playCard = findViewById(R.id.card_play);
-            if (playCard != null) {
-                playCard.setOnClickListener(v -> {
-                    try {
-                        Intent intent = new Intent();
-                        intent.setClass(this, PlayActivity.class);
-                        startActivity(intent);
-                        Log.d("start", "PlayActivity started successfully");
-                    } catch (Exception e) {
-                        Log.e("start", "Error starting PlayActivity", e);
-                    }
-                });
-            }
-            
-            // Lichess Card
-            View lichessCard = findViewById(R.id.card_lichess);
-            if (lichessCard != null) {
-                lichessCard.setOnClickListener(v -> {
-                    try {
-                        Intent intent = new Intent();
-                        intent.setClass(this, LichessActivity.class);
-                        startActivity(intent);
-                        Log.d("start", "LichessActivity started successfully");
-                    } catch (Exception e) {
-                        Log.e("start", "Error starting LichessActivity", e);
-                    }
-                });
-            }
-            
-            // Practice Card
-            View practiceCard = findViewById(R.id.card_practice);
-            if (practiceCard != null) {
-                practiceCard.setOnClickListener(v -> {
-                    try {
-                        Intent intent = new Intent();
-                        intent.setClass(this, PracticeActivity.class);
-                        startActivity(intent);
-                        Log.d("start", "PracticeActivity started successfully");
-                    } catch (Exception e) {
-                        Log.e("start", "Error starting PracticeActivity", e);
-                    }
-                });
-            }
-            
-            // Puzzles Card
-            View puzzlesCard = findViewById(R.id.card_puzzles);
-            if (puzzlesCard != null) {
-                puzzlesCard.setOnClickListener(v -> {
-                    try {
-                        Intent intent = new Intent();
-                        intent.setClass(this, PuzzleActivity.class);
-                        startActivity(intent);
-                        Log.d("start", "PuzzleActivity started successfully");
-                    } catch (Exception e) {
-                        Log.e("start", "Error starting PuzzleActivity", e);
-                    }
-                });
-            }
-            
-            // Settings Card
-            View settingsCard = findViewById(R.id.board_preferences);
-            if (settingsCard != null) {
-                settingsCard.setOnClickListener(v -> {
-                    try {
-                        Intent intent = new Intent();
-                        intent.setClass(this, BoardPreferencesActivity.class);
-                        startActivity(intent);
-                        Log.d("start", "BoardPreferencesActivity started successfully");
-                    } catch (Exception e) {
-                        Log.e("start", "Error starting BoardPreferencesActivity", e);
-                    }
-                });
-            }
-            
-            // Tools Card
-            View toolsCard = findViewById(R.id.card_tools);
-            if (toolsCard != null) {
-                toolsCard.setOnClickListener(v -> {
-                    try {
-                        showToolsDialog();
-                        Log.d("start", "Tools dialog shown successfully");
-                    } catch (Exception e) {
-                        Log.e("start", "Error showing tools dialog", e);
-                    }
-                });
-            }
-        } catch (Exception e) {
-            Log.e("start", "Error setting up click listeners", e);
-        }
+    private void setupCardClickListeners() {
+        // The old layout uses ListView with array entries, no need for manual setup
+        // The ListView will handle clicks automatically from the array resource
+        Log.d("start", "Using classic ListView layout");
     }
     
     private void showToolsDialog() {
