@@ -117,12 +117,94 @@
         <item name="android:layout_marginBottom">4dp</item>
     </style>
 
+    <!-- 8 Ball Pool Style Cards -->
     <style name="StartCard" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/surfaceColor</item>
-        <item name="cardCornerRadius">18dp</item>
-        <item name="cardElevation">10dp</item>
-        <item name="strokeColor">@color/primaryColor</item>
-        <item name="strokeWidth">1dp</item>
+        <item name="cardCornerRadius">15dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="strokeColor">#4A3426</item>
+        <item name="strokeWidth">2dp</item>
         <item name="rippleColor">@color/primaryColor</item>
+    </style>
+
+    <!-- 3D Glossy Button Style -->
+    <style name="GlossyButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/primaryTextColor</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:elevation">6dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="cornerRadius">15dp</item>
+        <item name="android:paddingTop">25dp</item>
+        <item name="android:paddingBottom">25dp</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">20dp</item>
+    </style>
+
+    <!-- Classic Gold Button -->
+    <style name="ClassicChessButton" parent="GlossyButton">
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/classic_chess_button_bg</item>
+    </style>
+
+    <!-- Quick Teal Button -->
+    <style name="QuickChessButton" parent="GlossyButton">
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/quick_chess_button_bg</item>
+    </style>
+
+    <!-- Currency Bar Styles -->
+    <style name="CurrencyBar">
+        <item name="android:background">@drawable/currency_bar_bg</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="CurrencyItem">
+        <item name="android:background">@drawable/currency_item_bg</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <style name="GemCurrency" parent="CurrencyItem">
+        <item name="android:background">@drawable/gem_currency_bg</item>
+    </style>
+
+    <style name="CoinCurrency" parent="CurrencyItem">
+        <item name="android:background">@drawable/coin_currency_bg</item>
+    </style>
+
+    <!-- Profile Avatar -->
+    <style name="ProfileAvatar">
+        <item name="android:background">@drawable/avatar_frame_bg</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+
+    <!-- Chess Logo -->
+    <style name="ChessLogo">
+        <item name="android:background">@drawable/chess_logo_bg</item>
+        <item name="android:elevation">10dp</item>
+    </style>
+
+    <!-- Bottom Navigation -->
+    <style name="BottomNavigation">
+        <item name="android:background">@drawable/bottom_nav_bg</item>
+        <item name="android:elevation">10dp</item>
+    </style>
+
+    <style name="NavIcon">
+        <item name="android:background">@drawable/nav_icon_bg</item>
+        <item name="android:elevation">3dp</item>
+    </style>
+
+    <style name="NavIconHome">
+        <item name="android:background">@drawable/nav_icon_home_bg</item>
+        <item name="android:elevation">6dp</item>
+    </style>
+
+    <!-- Navigation Icons Active State -->
+    <style name="NavIconActive">
+        <item name="android:background">@drawable/nav_icon_active_bg</item>
     </style>
 </resources>
