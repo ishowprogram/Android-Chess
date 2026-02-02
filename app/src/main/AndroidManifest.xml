@@ -16,7 +16,7 @@
         <service android:name=".hotspotboard.HotspotBoardService" android:exported="true"/>
         <service android:name=".lichess.LichessService" android:exported="true"/>
         <activity
-            android:name=".start"
+            android:name=".startModern"
             android:label="@string/app_name"
             android:theme="@style/ChessStart"
             android:configChanges="orientation"
@@ -218,6 +218,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="application/x-chess-pgn" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="jwtc.android.chess.ShopActivity"
+            android:label="Chess Shop"
+            android:configChanges="orientation"
+            android:exported="true">
         </activity>
         <activity
             android:name=".lichess.LichessActivity"
