@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Nav Bar Background -->
+    <item android:gravity="center|bottom">
+        <bitmap
+            android:src="@drawable/nav_bar_bg"
+            android:gravity="center|bottom" />
+    </item>
+    
+    <!-- Home Icon -->
+    <item android:width="40dp" android:height="40dp" 
+          android:left="20dp" android:bottom="15dp">
+        <bitmap
+            android:src="@drawable/nav_home_icon"
+            android:gravity="center" />
+    </item>
+    
+    <!-- Friends Icon -->
+    <item android:width="40dp" android:height="40dp" 
+          android:left="90dp" android:bottom="15dp">
+        <bitmap
+            android:src="@drawable/nav_friends_icon"
+            android:gravity="center" />
+    </item>
+    
+    <!-- Chess Icon -->
+    <item android:width="40dp" android:height="40dp" 
+          android:left="160dp" android:bottom="15dp">
+        <bitmap
+            android:src="@drawable/nav_chess_icon"
+            android:gravity="center" />
+    </item>
+    
+    <!-- Shop Icon -->
+    <item android:width="40dp" android:height="40dp" 
+          android:left="230dp" android:bottom="15dp">
+        <bitmap
+            android:src="@drawable/nav_shop_icon"
+            android:gravity="center" />
+    </item>
+</layer-list>

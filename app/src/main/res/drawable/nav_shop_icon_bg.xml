@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:width="50dp" android:height="50dp">
+        <shape android:shape="oval">
+            <solid android:color="#DDA0DD"/>
+            <stroke android:width="3dp" android:color="#8B008B"/>
+        </shape>
+    </item>
+    <item android:width="40dp" android:height="40dp" android:gravity="center">
+        <bitmap
+            android:src="@drawable/nav_shop_icon"
+            android:gravity="center" />
+    </item>
+</layer-list>

@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- 8 Ball Pool Theme Colors -->
+    <!-- Miniclip Style Theme Colors -->
     <!-- Wood Theme -->
-    <color name="backgroundColor">#2D1B13</color>
-    <color name="backgroundDark">#1A0F0A</color>
-    <color name="backgroundLight">#3D2B1F</color>
+    <color name="backgroundColor">#3E2723</color>
+    <color name="backgroundDark">#2E1A17</color>
+    <color name="backgroundLight">#4E342E</color>
     
     <!-- Golden Accents -->
-    <color name="primaryColor">#FFD700</color>
-    <color name="primaryVariantColor">#FFA500</color>
-    <color name="primaryDark">#B8860B</color>
-    <color name="goldGradientStart">#FFD700</color>
-    <color name="goldGradientEnd">#FFA500</color>
+    <color name="primaryColor">#FFEB3B</color>
+    <color name="primaryVariantColor">#FFC107</color>
+    <color name="primaryDark">#F57C00</color>
+    <color name="goldGradientStart">#FFF59D</color>
+    <color name="goldGradientEnd">#FF6F00</color>
     
-    <!-- Teal/Quick Chess -->
-    <color name="secondaryColor">#008080</color>
-    <color name="secondaryVariantColor">#006666</color>
-    <color name="tealGradientStart">#008080</color>
-    <color name="tealGradientEnd">#006666</color>
+    <!-- Green/Quick Chess -->
+    <color name="secondaryColor">#4CAF50</color>
+    <color name="secondaryVariantColor">#388E3C</color>
+    <color name="tealGradientStart">#66BB6A</color>
+    <color name="tealGradientEnd">#2E7D32</color>
     
     <!-- Currency Colors -->
     <color name="gemBlue">#3498DB</color>

@@ -12,7 +12,7 @@
         android:id="@+id/wood_texture"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/wood_texture_overlay"
+        android:src="@drawable/wood_texture_bg"
         android:alpha="0.3"
         android:scaleType="fitXY"/>
 
@@ -188,50 +188,50 @@
             android:gravity="center_horizontal">
 
             <!-- Chess Logo -->
-            <TextView
-                android:id="@+id/chess_logo"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_marginBottom="40dp"
-                android:background="@drawable/chess_logo_bg"
-                android:text="♔"
-                android:textSize="80sp"
-                android:textColor="@color/backgroundColor"
-                android:gravity="center"
-                android:elevation="10dp"
-                android:fontFamily="serif"/>
 
             <!-- Game Cards -->
+
+            <ImageView
+                android:id="@+id/chess_logo"
+                android:layout_width="125dp"
+                android:layout_height="98dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/chess_logo_bg"
+                android:elevation="10dp"
+                android:src="@drawable/chess_logo"
+                android:scaleType="centerInside" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_height="387dp"
                 android:gravity="center_horizontal"
-                android:maxWidth="400dp">
+                android:maxWidth="400dp"
+                android:orientation="vertical">
 
                 <!-- Classic Chess Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_classic_chess"
+                    style="@style/StartCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    style="@style/StartCard"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="20dp"
-                        android:gravity="center">
+                        android:layout_height="102dp"
+                        android:gravity="center"
+                        android:padding="20dp">
 
                         <Button
                             android:id="@+id/btn_classic_chess"
+                            style="@style/ClassicChessButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            style="@style/ClassicChessButton"
-                            android:text="Classic Chess"/>
+                            android:background="@drawable/classic_chess_glossy_bg"
+                            android:text="Classic Chess" />
 
                     </LinearLayout>
 
@@ -240,26 +240,27 @@
                 <!-- Quick Chess Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_quick_chess"
+                    style="@style/StartCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
-                    style="@style/StartCard"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="20dp"
-                        android:gravity="center">
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:padding="20dp">
 
                         <Button
                             android:id="@+id/btn_quick_chess"
+                            style="@style/QuickChessButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            style="@style/QuickChessButton"
-                            android:text="Quick Chess"/>
+                            android:background="@drawable/quick_chess_glossy_bg"
+                            android:text="Quick Chess" />
 
                     </LinearLayout>
 
@@ -268,9 +269,9 @@
                 <!-- Legacy Features Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_more_features"
+                    style="@style/StartCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/StartCard"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground">
@@ -278,16 +279,16 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="20dp"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:padding="20dp">
 
                         <Button
                             android:id="@+id/btn_more_features"
+                            style="@style/GlossyButton"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            style="@style/GlossyButton"
-                            android:background="@drawable/more_features_button_bg"
-                            android:text="More Features"/>
+                            android:background="@drawable/more_features_glossy_bg"
+                            android:text="More Features" />
 
                     </LinearLayout>
 
@@ -300,161 +301,70 @@
     </ScrollView>
 
     <!-- Bottom Navigation -->
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="85dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/bottom_nav_bg"
-        android:elevation="10dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingTop="8dp">
+        android:background="@drawable/navigation_bar_complete"
+        android:elevation="10dp">
 
-        <!-- Home -->
-        <LinearLayout
+        <!-- Home Button -->
+        <ImageButton
             android:id="@+id/nav_home"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/nav_home_transparent"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true" />
 
-            <View
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/nav_icon_home_bg"
-                android:elevation="6dp"
-                android:layout_marginBottom="4dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="10sp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-        <!-- Friends -->
-        <LinearLayout
+        <!-- Friends Button -->
+        <ImageButton
             android:id="@+id/nav_friends"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="95dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/nav_friends_transparent"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true" />
 
-            <View
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/nav_icon_bg"
-                android:elevation="3dp"
-                android:layout_marginBottom="4dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Friends"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="10sp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-        <!-- Equipment (Chess Knight) -->
-        <LinearLayout
+        <!-- Chess Button -->
+        <ImageButton
             android:id="@+id/nav_equipment"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginTop="-15dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="165dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/nav_chess_transparent"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true" />
 
-            <View
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/nav_icon_home_bg"
-                android:elevation="6dp"
-                android:layout_marginBottom="4dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Chess"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="10sp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-        <!-- Events -->
-        <LinearLayout
-            android:id="@+id/nav_events"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:clickable="true"
-            android:focusable="true">
-
-            <View
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/nav_icon_bg"
-                android:elevation="3dp"
-                android:layout_marginBottom="4dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Events"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="10sp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-        <!-- Shop -->
-        <LinearLayout
+        <!-- Shop Button -->
+        <ImageButton
             android:id="@+id/nav_shop"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="235dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/nav_shop_transparent"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true" />
 
-            <View
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/nav_icon_bg"
-                android:elevation="3dp"
-                android:layout_marginBottom="4dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Shop"
-                android:textColor="@color/secondaryTextColor"
-                android:textSize="10sp"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

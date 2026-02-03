@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <layer-list>
+            <!-- Shadow Layer -->
+            <item android:top="4dp" android:left="4dp">
+                <shape android:shape="rectangle">
+                    <corners android:radius="20dp"/>
+                    <solid android:color="#80000000"/>
+                </shape>
+            </item>
+            <!-- Main Button -->
+            <item android:top="2dp" android:left="2dp">
+                <shape android:shape="rectangle">
+                    <corners android:radius="20dp"/>
+                    <gradient
+                        android:startColor="#4CAF50"
+                        android:endColor="#388E3C"
+                        android:angle="135"/>
+                </shape>
+            </item>
+            <!-- Top Highlight -->
+            <item android:bottom="10dp">
+                <shape android:shape="rectangle">
+                    <corners android:radius="20dp"/>
+                    <gradient
+                        android:startColor="#90EE90"
+                        android:endColor="#00FFFFFF"
+                        android:angle="270"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item>
+        <layer-list>
+            <!-- Shadow Layer -->
+            <item android:top="4dp" android:left="4dp">
+                <shape android:shape="rectangle">
+                    <corners android:radius="20dp"/>
+                    <solid android:color="#80000000"/>
+                </shape>
+            </item>
+            <!-- Main Button -->
+            <item>
+                <shape android:shape="rectangle">
+                    <corners android:radius="20dp"/>
+                    <gradient
+                        android:startColor="#66BB6A"
+                        android:endColor="#4CAF50"
+                        android:angle="135"/>
+                </shape>
+            </item>
+            <!-- Top Highlight -->
+            <item android:bottom="12dp">
+                <shape android:shape="rectangle">
+                    <corners android:radius="20dp"/>
+                    <gradient
+                        android:startColor="#C8FFC8"
+                        android:endColor="#00FFFFFF"
+                        android:angle="270"/>
+                </shape>
+            </item>
+            <!-- Border -->
+            <item>
+                <shape android:shape="rectangle">
+                    <corners android:radius="20dp"/>
+                    <stroke android:width="3dp" android:color="#2E7D32"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>
