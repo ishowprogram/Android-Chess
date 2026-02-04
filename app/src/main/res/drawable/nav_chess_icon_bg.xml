@@ -9,6 +9,7 @@
     <item android:width="40dp" android:height="40dp" android:gravity="center">
         <bitmap
             android:src="@drawable/nav_chess_icon"
-            android:gravity="center" />
+            android:gravity="center"
+            android:tint="@android:color/black" />
     </item>
 </layer-list>

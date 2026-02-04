@@ -648,7 +648,7 @@
         android:layout_width="match_parent"
         android:layout_height="85dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/bottom_nav_bg"
+        android:background="@drawable/nav_bar_bg"
         android:elevation="10dp"
         android:gravity="center"
         android:orientation="horizontal"
@@ -665,10 +665,11 @@
             android:clickable="true"
             android:focusable="true">
 
-            <View
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/nav_icon_bg"
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/nav_home_transparent"
+                android:scaleType="centerInside"
                 android:elevation="3dp"
                 android:layout_marginBottom="4dp"/>
 
@@ -694,10 +695,11 @@
             android:clickable="true"
             android:focusable="true">
 
-            <View
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/nav_icon_bg"
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/nav_friends_transparent"
+                android:scaleType="centerInside"
                 android:elevation="3dp"
                 android:layout_marginBottom="4dp"/>
 
@@ -723,10 +725,11 @@
             android:clickable="true"
             android:focusable="true">
 
-            <View
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/nav_icon_bg"
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/nav_chess_transparent"
+                android:scaleType="centerInside"
                 android:elevation="3dp"
                 android:layout_marginBottom="4dp"/>
 
@@ -752,10 +755,11 @@
             android:clickable="true"
             android:focusable="true">
 
-            <View
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/nav_icon_bg"
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/nav_shop_transparent"
+                android:scaleType="centerInside"
                 android:elevation="3dp"
                 android:layout_marginBottom="4dp"/>
 
@@ -781,10 +785,11 @@
             android:clickable="true"
             android:focusable="true">
 
-            <View
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:background="@drawable/nav_icon_active_bg"
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/nav_shop_transparent"
+                android:scaleType="centerInside"
                 android:elevation="3dp"
                 android:layout_marginBottom="4dp"/>
 
